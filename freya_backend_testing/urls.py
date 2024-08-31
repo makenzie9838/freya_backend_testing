@@ -16,7 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import (
+    FilterProductsByCategory,
+    FilterProductsByCategoryAndIngredient,
+    FilterOutProductsByCategoryAndIngredient
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('filter_by_category/', FilterProductsByCategory.as_view(), name='filter_by_category'),
+    path('filter_by_category_and_ingredient/', FilterProductsByCategoryAndIngredient.as_view(), name='filter_by_category_and_ingredient'),
+    path('filter_out_by_category_and_ingredient/', FilterOutProductsByCategoryAndIngredient.as_view(), name='filter_out_by_category_and_ingredient'),
 ]

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'freya_backend_testing',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
