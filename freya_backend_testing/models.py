@@ -10,3 +10,12 @@ class Product(models.Model):
     category = models.CharField(max_length=255)
     skin_tags = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+
+class User(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255)
+    telephone = models.CharField(max_length=255)
+    subscriptionStatus = models.BooleanField()
+    skinType = models.CharField(max_length=255)
+    photos = models.ImageField(upload_to='photos/')
+    created_at = models.DateTimeField(auto_now_add=True)

@@ -17,14 +17,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import (
-    FilterProductsByCategory,
-    FilterProductsByCategoryAndIngredient,
-    FilterOutProductsByCategoryAndIngredient
+    SearchAndFilterProducts,
+    GetProduct,
+    GetUser 
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('filter_by_category/', FilterProductsByCategory.as_view(), name='filter_by_category'),
-    path('filter_by_category_and_ingredient/', FilterProductsByCategoryAndIngredient.as_view(), name='filter_by_category_and_ingredient'),
-    path('filter_out_by_category_and_ingredient/', FilterOutProductsByCategoryAndIngredient.as_view(), name='filter_out_by_category_and_ingredient'),
+    # Search and/or Filter Products Endpoint
+    path('products/', SearchAndFilterProducts.as_view(), name='search_and_filter_products'),
+    
+    # Get Product by ID Endpoint
+    path('product/<int:product_id>/', GetProduct.as_view(), name='get_product'),
+
+    # Get User by ID Endpoint
+    path('user/<int:user_id>/', GetUser.as_view(), name='get_user'),
 ]
