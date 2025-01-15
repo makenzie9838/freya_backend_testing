@@ -20,6 +20,7 @@ def create_test_data():
             name=f'Product {i}',
             image=f'https://www.example.com/image_{i}.png',
             url=f'https://www.example.com/product_{i}',
+            # Should really be an array but it's fine
             ingredients=f'Ingredient {i}',
             estimated_price=i * 10,
             category=ProductCategory.CLEANSER if i % 2 == 0 else ProductCategory.TONER,
@@ -38,3 +39,24 @@ def create_test_data():
             # set it to random time
             created_at = f'2022-01-0{i}T00:00:00Z'
         )
+
+# Temporary stubs
+def filter_products_by_ingredient(ingredient):
+    all_products = Product.objects.all()
+    result = []
+
+    for product in all_products:
+        if ingredient == product.ingredients:
+            result.append(product)
+
+    return result
+
+def filter_out_products_that_have_ingredient(ingredient):
+    all_products = Product.objects.all()
+    result = []
+
+    for product in all_products:
+        if ingredient != product.ingredients:
+            result.append(product)
+            
+    return result
